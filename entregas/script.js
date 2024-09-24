@@ -1,35 +1,43 @@
 
+function pedirNombre(nombre) {
+    console.log(`Hola, ${nombre}!`);
+}
 
 let nombre = prompt('Ingrese su nombre:');
-let apellido = prompt('Ingrese su apellido:');
-let email = prompt('Ingrese su email:');
-let contraseña = prompt('Ingrese su contraseña:');
-let edad = prompt('Ingrese su edad:');
+let apellido = prompt(nombre +" "+"por favor ingrese su apellido:");
+let email = prompt(nombre +" "+ "Ingrese su email:");
+let contraseña = prompt(nombre +" "+"Ingrese su contraseña:");
+let edad = prompt(nombre +" "+"Ingrese su edad:");
+do {
+    
+    if (!validarEdad(edad)) {
+        console.log(nombre +" "+ "Por favor, ingresa una edad válida. Debes ser mayor de 18 años.");
+    }
+} while (!validarEdad(edad));
+function validarEdad(edad) {
+    return !isNaN(edad) && edad >= 18;
+}
+
 let pregunta1 = prompt("¿visitas frecuentemente la pagina? (Sí/No)").toLowerCase();
-let pregunta2 = prompt("¿como la calificarias? (malo/bueno/muy bueno)");
+let pregunta2 
 
 
-if (pregunta1 ==="si"|| pregunta1 === "si") {
-    console.log("¡Nos alegra que te haya gustado!");
-} else if (pregunta1 = "no") {
-    console.log("Lamentamos que no haya sido de tu agrado. Agradecemos tu feedback para mejorar.");
+if (pregunta1 ==="si") {
+    console.log("¡Nos alegra"+" "+ nombre +" "+ "que te haya gustado!");
+} else if (pregunta1 === "no") {
+    console.log("Lamentamos" +" "+ nombre+" "+"que no haya sido de tu agrado. Agradecemos tu feedback para mejorar.");
 } else {
     console.log("Por favor, responde solo con 'Sí' o 'No'.");
 }
-switch(pregunta2){
-    case 'malo':
-        console.log("lamentamos que no les guste"); 
-    break;
-    case 'bueno':
-        console.log("bueno nos tendremos que poner a trabajar");
-    break;
-    case 'muy bueno':
-       console.log("genial por que nos matamos trabajando") 
-    break; 
-    default:
-        console.log("ponete las pilas y elegí entre 'Malo', 'Bueno' o 'Muy bueno'."); 
-}
-alert("¡Gracias por completar la encuesta!");
+do {
+    pregunta2 = prompt("¿Cómo la calificarías la pagina web? (malo/bueno/muy bueno)").toLowerCase();
+    
+    if (pregunta2 !== "malo" && pregunta2 !== "bueno" && pregunta2 !== "muy bueno") {
+        console.log("Por favor, ingresa una respuesta válida: malo, bueno o muy bueno.");
+    }
+} while (pregunta2 !== "malo" && pregunta2 !== "bueno" && pregunta2 !== "muy bueno");
+
+alert("¡Gracias por completar la encuesta"+" "+nombre+" "+"!");
 
 
 console.log("Nombre:", nombre);
